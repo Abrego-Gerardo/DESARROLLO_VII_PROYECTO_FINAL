@@ -1,0 +1,25 @@
+Direccion Principal
+http://localhost/PROYECTO/P%C3%A1gina_web_de_agencia_de_viajes/index.php
+
+
+Direcciones para cada pagina
+
+Direcciones de pantallas registro de usuario
+http://localhost/PROYECTO/P%C3%A1gina_web_de_agencia_de_viajes/views/login_form.php
+http://localhost/PROYECTO/P%C3%A1gina_web_de_agencia_de_viajes/views/register_form.php
+
+Direcciones de pantallas del catalogo
+http://localhost/PROYECTO/P%C3%A1gina_web_de_agencia_de_viajes/views/catalogo_viajes.php
+http://localhost/PROYECTO/P%C3%A1gina_web_de_agencia_de_viajes/views/buscar_viajes.php
+http://localhost/PROYECTO/P%C3%A1gina_web_de_agencia_de_viajes/views/detalles_viajes.php
+http://localhost/PROYECTO/P%C3%A1gina_web_de_agencia_de_viajes/views/confirmar_reserva.php
+
+Direccion de pantalla de reservas
+http://localhost/PROYECTO/P%C3%A1gina_web_de_agencia_de_viajes/views/detalles_reservas.php
+
+Direcciones de pantallas de administracion
+http://localhost/PROYECTO/P%C3%A1gina_web_de_agencia_de_viajes/views/administracion.php
+http://localhost/PROYECTO/P%C3%A1gina_web_de_agencia_de_viajes/views/agregar_paquete.php
+
+Direccion de pantallas de contactos
+http://localhost/PROYECTO/P%C3%A1gina_web_de_agencia_de_viajes/views/contactos.php
