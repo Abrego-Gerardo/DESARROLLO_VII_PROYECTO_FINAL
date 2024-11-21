@@ -1,9 +1,0 @@
-CREATE DATABASE migration_db;
-USE migration_db;
-
-CREATE TABLE IF NOT EXISTS tasks (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    title VARCHAR(255) NOT NULL,
-    is_completed BOOLEAN DEFAULT FALSE,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
