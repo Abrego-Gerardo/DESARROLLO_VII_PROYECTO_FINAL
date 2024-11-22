@@ -25,4 +25,4 @@ Direccion de pantallas de contactos
 http://localhost/PROYECTO/P%C3%A1gina_web_de_agencia_de_viajes/views/contactos.php
 
 
-Prueba 1
+Prueba 2
