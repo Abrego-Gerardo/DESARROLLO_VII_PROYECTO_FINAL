@@ -30,9 +30,54 @@
     <div class="main-content">
         <h1>Bienvenido a la Agencia de Viajes</h1>
         <p>Aquí podrás encontrar los mejores paquetes de viajes.</p>
+
+        <div class="destinos">
+            <h2>Destinos Nacionales</h2>
+            <div class="destinos-container">
+                <?php
+                $conn = new mysqli("localhost", "root", "", "agencia_db");
+                if ($conn->connect_error) {
+                    die("Conexión fallida: " . $conn->connect_error);
+                }
+
+                $sql = "SELECT * FROM destinos WHERE tipo_destino='Nacional'";
+                $result = $conn->query($sql);
+
+                if ($result->num_rows > 0) {
+                    while($row = $result->fetch_assoc()) {
+                        echo "<div class='destino' style='background-image: url(" . $row['foto'] . ");'>";
+                        echo "<h3>" . $row['city'] . "</h3>";
+                        echo "</div>";
+                    }
+                } else {
+                    echo "No hay destinos nacionales disponibles.";
+                }
+                ?>
+            </div>
+
+            <h2>Destinos Internacionales</h2>
+            <div class="destinos-container">
+                <?php
+                $sql = "SELECT * FROM destinos WHERE tipo_destino='Internacional'";
+                $result = $conn->query($sql);
+
+                if ($result->num_rows > 0) {
+                    while($row = $result->fetch_assoc()) {
+                        echo "<div class='destino' style='background-image: url(" . $row['foto'] . ");'>";
+                        echo "<h3>" . $row['city'] . "</h3>";
+                        echo "</div>";
+                    }
+                } else {
+                    echo "No hay destinos internacionales disponibles.";
+                }
+
+                $conn->close();
+                ?>
+            </div>
+        </div>
     </div>
     <div class="footer">
-        <p>&copy; 2023 Agencia de Viajes. Todos los derechos reservados.</p>
+        <p>&copy; 2024 Agencia de Viajes. Todos los derechos reservados.</p>
     </div>
 </body>
 </html>
