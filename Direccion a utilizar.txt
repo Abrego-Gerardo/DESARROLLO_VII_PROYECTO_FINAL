@@ -19,7 +19,7 @@ http://localhost/PROYECTO/views/detalles_reservas.php
 
 Direcciones de pantallas de administracion
 http://localhost/PROYECTO/views/administracion.php
-http://localhost/PROYECTO/agregar_paquete.php
+http://localhost/PROYECTO/viewa/agregar_paquete.php
 
 Direccion de pantallas de contactos
 http://localhost/PROYECTO/views/contactos.php
