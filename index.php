@@ -29,8 +29,9 @@ $conn->close();
         <div class="right">
             <?php
             session_start();
-            if (isset($_SESSION['username'])) {
-                echo "Usuario: " . htmlspecialchars($_SESSION['username']);
+            if (isset($_SESSION['user'])) {
+                echo "Usuario: " . htmlspecialchars($_SESSION['user']);
+                echo "<a href='views/logout.php'>Cerrar sesión</a>";
             } else {
                 echo "<a href='views/login_form.php' style='color: white;'>Iniciar Sesión</a>";
             }
