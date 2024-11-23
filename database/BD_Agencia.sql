@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-11-2024 a las 05:25:42
+-- Tiempo de generación: 23-11-2024 a las 18:15:22
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -31,15 +31,17 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` varchar(80) NOT NULL,
   `email` varchar(80) NOT NULL,
-  `password` varchar(80) NOT NULL
+  `password` varchar(80) NOT NULL,
+  `usertype` varchar(50) NOT NULL DEFAULT 'usuario'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `email`, `password`) VALUES
-(1, 'Kevin1', 'delgadokev13@gmail.com', '$2y$10$qkD7nk89XnYY9N12phvQxOFtUZQte6Cnjq328Zj0K8zrnOIcCLx2q');
+INSERT INTO `users` (`id`, `username`, `email`, `password`, `usertype`) VALUES
+(1, 'Kevin1', 'delgadokev13@gmail.com', '$2y$10$qkD7nk89XnYY9N12phvQxOFtUZQte6Cnjq328Zj0K8zrnOIcCLx2q', 'usuario'),
+(2, 'KevinAdmin', 'kevin.delgado1@utp.ac.pa', '$2y$10$e6n.8kjJt4g/u31XJUCqO.ng.Ygq4hR0H4KxDWrJ8LaWMOkN3Ed9S', 'admin');
 
 --
 -- Índices para tablas volcadas
@@ -59,7 +61,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
