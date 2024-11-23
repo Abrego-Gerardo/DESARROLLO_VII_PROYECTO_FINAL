@@ -12,10 +12,13 @@
         <div class="right">
             <?php
             session_start();
-            if (isset($_SESSION['username'])) {
-                echo "Usuario: " . htmlspecialchars($_SESSION['username']);
-            } else {
-                echo "<a href='login_form.php' style='color: white;'>Iniciar Sesión</a>";
+            if (!isset($_SESSION['usertype']) || $_SESSION['usertype'] !== 'admin') {
+                header("Location: login_form.php");
+                exit();
+            }
+            if (isset($_SESSION['user'])) {
+                echo "Usuario: " . htmlspecialchars($_SESSION['user']);
+                echo "<a href='logout.php'>Cerrar sesión</a>";
             }
             ?>
         </div>

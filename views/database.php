@@ -7,7 +7,7 @@ $dbName = "agencia_db";
 
 $conn = mysqli_connect($hostName, $dbUser, $dbPassword, $dbName);
 if (!$conn) {
-    die("Cagaste Light");
+    die("Error de conexión");
 }
 
 ?>

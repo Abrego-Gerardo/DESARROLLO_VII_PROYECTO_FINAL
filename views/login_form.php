@@ -25,10 +25,20 @@
                 $user = mysqli_fetch_array($result, MYSQLI_ASSOC);
                 if ($user) {
                     if (password_verify($password, $user["password"])) {
-                        session_start();
-                        $_SESSION["user"] = "yes";
-                        header("Location: ../index.php");
-                        die();
+                        if ($user["usertype"]=="usuario") {
+                            session_start();
+                            $_SESSION["user"] = $user["username"];
+                            $_SESSION["usertype"] = $user["usertype"];
+                            header("Location: ../index.php");
+                            die(); 
+                        }else{
+                            session_start();
+                            $_SESSION["user"] = $user["username"];
+                            $_SESSION["usertype"] = $user["usertype"];
+                            header("Location: ../views/administracion.php");
+                            die();
+                        }
+                        
                     }else{
                         echo "<div>El correo/contraseña fue incorrecto</div>";
                     }
