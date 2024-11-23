@@ -33,4 +33,7 @@ INSERT INTO `destinos` (`id`, `tipo_destino`, `pais`, `city`, `precio_nino`, `pr
 (15, 'Internacional', 'Estados Unidos', 'New York', '500', '950', '900', 'fotos/Dest Internacionales/7int.jpg'),
 (16, 'Internacional', 'Argentina', 'Buenos Aires', '320', '640', '550', 'fotos/Dest Internacionales/8int.jpg');
 
+--Alteracione de la tabal Destinos para administracion--
 ALTER TABLE `destinos` ADD `detalles` TEXT DEFAULT NULL;
+ALTER TABLE `destinos` MODIFY `id` INT(10) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `destinos` ADD PRIMARY KEY (`id`);
