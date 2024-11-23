@@ -11,12 +11,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Procesar Edición
         $id = $_POST['id'];
         $nombre = $_POST['nombre'];
-        $descripcion = $_POST['descripcion'];
+        $tipo_destino = $_POST['tipo_destino'];
         $precio_nino = $_POST['precio_nino'];
         $precio_adulto = $_POST['precio_adulto'];
         $precio_mayor = $_POST['precio_mayor'];
+        $detalles = $_POST['detalles'];
 
-        $sql = "UPDATE destinos SET city='$nombre', tipo_destino='$descripcion', precio_nino='$precio_nino', precio_adulto='$precio_adulto', precio_mayor='$precio_mayor' WHERE id=$id";
+        $sql = "UPDATE destinos SET city='$nombre', tipo_destino='$tipo_destino', precio_nino='$precio_nino', precio_adulto='$precio_adulto', precio_mayor='$precio_mayor', detalles='$detalles' WHERE id=$id";
         $conn->query($sql);
     } elseif ($_POST['action'] === 'delete') {
         // Procesar Eliminación
@@ -26,12 +27,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif ($_POST['action'] === 'create') {
         // Procesar Creación
         $nombre = $_POST['nombre'];
-        $descripcion = $_POST['descripcion'];
+        $tipo_destino = $_POST['tipo_destino'];
         $precio_nino = $_POST['precio_nino'];
         $precio_adulto = $_POST['precio_adulto'];
         $precio_mayor = $_POST['precio_mayor'];
+        $detalles = $_POST['detalles'];
 
-        $sql = "INSERT INTO destinos (city, tipo_destino, precio_nino, precio_adulto, precio_mayor) VALUES ('$nombre', '$descripcion', '$precio_nino', '$precio_adulto', '$precio_mayor')";
+        $sql = "INSERT INTO destinos (city, tipo_destino, precio_nino, precio_adulto, precio_mayor, detalles) VALUES ('$nombre', '$tipo_destino', '$precio_nino', '$precio_adulto', '$precio_mayor', '$detalles')";
         $conn->query($sql);
     }
 }
@@ -68,7 +70,7 @@ $conn->close();
     <div class="nav">
         <a href="../index.php">Inicio</a>
         <a href="catalogo_viajes.php">Catálogo de Viajes</a>
-        <a href="detalles_reservas.php">Reservas</a>
+        <a href="reservas.php">Reservas</a>
         <a href="administracion.php">Administración</a>
         <a href="contacto.php">Soporte y Contacto</a>
     </div>
@@ -82,14 +84,19 @@ $conn->close();
                 <input type="hidden" name="action" value="create">
                 <label for="nombre">Nombre del Paquete:</label>
                 <input type="text" id="nombre" name="nombre" placeholder="Nombre del Paquete" required>
-                <label for="descripcion">Descripción:</label>
-                <textarea id="descripcion" name="descripcion" placeholder="Descripción del Paquete" required></textarea>
+                <label for="tipo_destino">Tipo de Destino:</label>
+                <select id="tipo_destino" name="tipo_destino" required>
+                    <option value="Nacional">Nacional</option>
+                    <option value="Internacional">Internacional</option>
+                </select>
                 <label for="precio_nino">Precio Niño:</label>
                 <input type="number" id="precio_nino" name="precio_nino" placeholder="Precio Niño" required>
                 <label for="precio_adulto">Precio Adulto:</label>
                 <input type="number" id="precio_adulto" name="precio_adulto" placeholder="Precio Adulto" required>
                 <label for="precio_mayor">Precio Mayor:</label>
                 <input type="number" id="precio_mayor" name="precio_mayor" placeholder="Precio Mayor" required>
+                <label for="detalles">Detalles:</label>
+                <textarea id="detalles" name="detalles" placeholder="Detalles del Paquete" required></textarea>
                 <button type="submit">Crear Paquete</button>
             </form>
         </div>
@@ -107,14 +114,19 @@ $conn->close();
                         echo "<input type='hidden' name='action' value='edit'>";
                         echo "<label for='nombre_" . $row['id'] . "'>Nombre:</label>";
                         echo "<input type='text' id='nombre_" . $row['id'] . "' name='nombre' value='" . $row['city'] . "' required>";
-                        echo "<label for='descripcion_" . $row['id'] . "'>Descripción:</label>";
-                        echo "<textarea id='descripcion_" . $row['id'] . "' name='descripcion' required>" . $row['tipo_destino'] . "</textarea>";
+                        echo "<label for='tipo_destino_" . $row['id'] . "'>Tipo de Destino:</label>";
+                        echo "<select id='tipo_destino_" . $row['id'] . "' name='tipo_destino' required>";
+                        echo "<option value='Nacional' " . ($row['tipo_destino'] == 'Nacional' ? 'selected' : '') . ">Nacional</option>";
+                        echo "<option value='Internacional' " . ($row['tipo_destino'] == 'Internacional' ? 'selected' : '') . ">Internacional</option>";
+                        echo "</select>";
                         echo "<label for='precio_nino_" . $row['id'] . "'>Precio Niño:</label>";
                         echo "<input type='number' id='precio_nino_" . $row['id'] . "' name='precio_nino' value='" . $row['precio_nino'] . "' required>";
                         echo "<label for='precio_adulto_" . $row['id'] . "'>Precio Adulto:</label>";
                         echo "<input type='number' id='precio_adulto_" . $row['id'] . "' name='precio_adulto' value='" . $row['precio_adulto'] . "' required>";
                         echo "<label for='precio_mayor_" . $row['id'] . "'>Precio Mayor:</label>";
                         echo "<input type='number' id='precio_mayor_" . $row['id'] . "' name='precio_mayor' value='" . $row['precio_mayor'] . "' required>";
+                        echo "<label for='detalles_" . $row['id'] . "'>Detalles:</label>";
+                        echo "<textarea id='detalles_" . $row['id'] . "' name='detalles' required>" . $row['detalles'] . "</textarea>";
                         echo "<button type='submit'>Guardar Cambios</button>";
                         echo "</form>";
                         echo "<form action='administracion.php' method='post' style='display:inline;'>";
