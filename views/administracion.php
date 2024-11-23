@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $precio_nino = $_POST['precio_nino'];
         $precio_adulto = $_POST['precio_adulto'];
         $precio_mayor = $_POST['precio_mayor'];
-        $detalles = $_POST['detalles'];
+        $detalles = $_POST['detalles'] ?? '';
 
         $sql = "UPDATE destinos SET city='$nombre', tipo_destino='$tipo_destino', precio_nino='$precio_nino', precio_adulto='$precio_adulto', precio_mayor='$precio_mayor', detalles='$detalles' WHERE id=$id";
         $conn->query($sql);
@@ -23,17 +23,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Procesar Eliminación
         $id = $_POST['id'];
         $sql = "DELETE FROM destinos WHERE id=$id";
-        $conn->query($sql);
-    } elseif ($_POST['action'] === 'create') {
-        // Procesar Creación
-        $nombre = $_POST['nombre'];
-        $tipo_destino = $_POST['tipo_destino'];
-        $precio_nino = $_POST['precio_nino'];
-        $precio_adulto = $_POST['precio_adulto'];
-        $precio_mayor = $_POST['precio_mayor'];
-        $detalles = $_POST['detalles'];
-
-        $sql = "INSERT INTO destinos (city, tipo_destino, precio_nino, precio_adulto, precio_mayor, detalles) VALUES ('$nombre', '$tipo_destino', '$precio_nino', '$precio_adulto', '$precio_mayor', '$detalles')";
         $conn->query($sql);
     }
 }
@@ -77,28 +66,10 @@ $conn->close();
     <div class="main-content">
         <h1>Administración de Paquetes</h1>
         
-        <!-- Formulario para Crear Paquete -->
+        <!-- Botón para Redirigir a la Página de Crear Paquete -->
         <div class="contenido-blanco">
             <h2>Crear Paquete</h2>
-            <form action="administracion.php" method="post">
-                <input type="hidden" name="action" value="create">
-                <label for="nombre">Nombre del Paquete:</label>
-                <input type="text" id="nombre" name="nombre" placeholder="Nombre del Paquete" required>
-                <label for="tipo_destino">Tipo de Destino:</label>
-                <select id="tipo_destino" name="tipo_destino" required>
-                    <option value="Nacional">Nacional</option>
-                    <option value="Internacional">Internacional</option>
-                </select>
-                <label for="precio_nino">Precio Niño:</label>
-                <input type="number" id="precio_nino" name="precio_nino" placeholder="Precio Niño" required>
-                <label for="precio_adulto">Precio Adulto:</label>
-                <input type="number" id="precio_adulto" name="precio_adulto" placeholder="Precio Adulto" required>
-                <label for="precio_mayor">Precio Mayor:</label>
-                <input type="number" id="precio_mayor" name="precio_mayor" placeholder="Precio Mayor" required>
-                <label for="detalles">Detalles:</label>
-                <textarea id="detalles" name="detalles" placeholder="Detalles del Paquete" required></textarea>
-                <button type="submit">Crear Paquete</button>
-            </form>
+            <a href="agregar_paquete.php"><button type="button">Crear Paquete</button></a>
         </div>
 
         <!-- Formulario para Modificar Paquetes -->
@@ -108,6 +79,7 @@ $conn->close();
                 <?php
                 if ($result->num_rows > 0) {
                     while($row = $result->fetch_assoc()) {
+                        $detalles = $row['detalles'] ?? ''; // Verificar si el campo detalles existe
                         echo "<div class='paquete'>";
                         echo "<form action='administracion.php' method='post'>";
                         echo "<input type='hidden' name='id' value='" . $row['id'] . "'>";
@@ -126,7 +98,7 @@ $conn->close();
                         echo "<label for='precio_mayor_" . $row['id'] . "'>Precio Mayor:</label>";
                         echo "<input type='number' id='precio_mayor_" . $row['id'] . "' name='precio_mayor' value='" . $row['precio_mayor'] . "' required>";
                         echo "<label for='detalles_" . $row['id'] . "'>Detalles:</label>";
-                        echo "<textarea id='detalles_" . $row['id'] . "' name='detalles' required>" . $row['detalles'] . "</textarea>";
+                        echo "<textarea id='detalles_" . $row['id'] . "' name='detalles' required>" . htmlspecialchars($detalles) . "</textarea>";
                         echo "<button type='submit'>Guardar Cambios</button>";
                         echo "</form>";
                         echo "<form action='administracion.php' method='post' style='display:inline;'>";
