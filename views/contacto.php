@@ -10,13 +10,12 @@
     <div class="header">
         <div class="left">Soporte y Contacto</div>
         <div class="right">
-        <?php
+            <?php
             session_start();
-            if (isset($_SESSION['user'])) {
-                echo "Usuario: " . htmlspecialchars($_SESSION['user']);
-                echo "<a href='views/logout.php'>Cerrar sesión</a>";
+            if (isset($_SESSION['username'])) {
+                echo "Usuario: " . htmlspecialchars($_SESSION['username']);
             } else {
-                echo "<a href='views/login_form.php' style='color: white;'>Iniciar Sesión</a>";
+                echo "<a href='login_form.php' style='color: white;'>Iniciar Sesión</a>";
             }
             ?>
         </div>
@@ -40,6 +39,8 @@
             <p><strong>Correos Electrónicos:</strong></p>
             <ul>
                 <li><a href="mailto:hugoarmandorc2002@gmail.com">hugoarmandorc2002@gmail.com</a></li>
+                <li><a href="mailto:delgadokev13@gmail.com">delgadokev@gmail.com</a></li>
+                <li><a href="mailto:abrego010702@gmail.com">abrego010702@gmail.com.com</a></li>
             </ul>
             <p><strong>Números de Teléfono:</strong></p>
             <ul>
@@ -50,7 +51,7 @@
         </div>
     </div>
     <div class="footer">
-        <p>&copy; 2023 Agencia de Viajes. Todos los derechos reservados.</p>
+        <p>&copy; 2024 Agencia de Viajes. Todos los derechos reservados.</p>
     </div>
 </body>
 </html>

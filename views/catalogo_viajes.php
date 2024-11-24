@@ -43,13 +43,12 @@
     <div class="header">
         <div class="left">Catálogo de Viajes</div>
         <div class="right">
-        <?php
+            <?php
             session_start();
-            if (isset($_SESSION['user'])) {
-                echo "Usuario: " . htmlspecialchars($_SESSION['user']);
-                echo "<a href='views/logout.php'>Cerrar sesión</a>";
+            if (isset($_SESSION['username'])) {
+                echo "Usuario: " . htmlspecialchars($_SESSION['username']);
             } else {
-                echo "<a href='views/login_form.php' style='color: white;'>Iniciar Sesión</a>";
+                echo "<a href='login_form.php' style='color: white;'>Iniciar Sesión</a>";
             }
             ?>
         </div>
@@ -63,16 +62,16 @@
     </div>
     <div class="main-content">
         <h1>¿A dónde quieres ir?</h1>
-        <form action="buscar_viajes.php" method="post">
+        <form action="catalogo_viajes.php" method="post">
             <label for="origen">Origen:</label>
             <select id="origen" name="origen" required>
-                <option value="nacional">Nacional</option>
-                <option value="internacional">Internacional</option>
+                <option value="Nacional">Nacional</option>
+                <option value="Internacional">Internacional</option>
             </select>
             <label for="destino">Destino:</label>
             <select id="destino" name="destino" required>
-                <option value="nacional">Nacional</option>
-                <option value="internacional">Internacional</option>
+                <option value="Nacional">Nacional</option>
+                <option value="Internacional">Internacional</option>
             </select>
             <label for="fecha_salida">Fecha de Salida:</label>
             <input type="date" id="fecha_salida" name="fecha_salida" required onchange="validarFechaRegreso()">
@@ -85,28 +84,15 @@
                 <option value="tierra">Tierra</option>
             </select>
             <div class="slider-container">
-                <label for="precio">Rango de precio por maximo persona:</label>
-                <input type="range" id="precio" name="precio" class="slider" min="0" max="1000" step="10" oninput="this.nextElementSibling.value = this.value">
-                <output>500 </output>
+                <label for="precio">Rango de precio máximo por persona:</label>
+                <input type="range" id="precio" name="precio" class="slider" min="0" max="1000" step="10" oninput="this.nextElementSibling.value = '$' + this.value">
+                <output>$500</output>
             </div>
             <button type="submit">Buscar Viaje</button>
         </form>
-    </div>
+
     <div class="footer">
-        <p>&copy; 2024 Agencia de Viajes. Todos los derechos reservados.</p>
+        <p>&copy 2024 Agencia de Viajes. Todos los derechos reservados.</p>
     </div>
-
-    <!-- Script para manejo de fechas -->
-    <script>
-        function validarFechaRegreso() {
-            const fechaSalida = document.getElementById("fecha_salida").value;
-            const fechaRegreso = document.getElementById("fecha_regreso");
-
-            if (fechaSalida) {
-                // Establecer la fecha mínima en el campo de regreso
-                fechaRegreso.min = fechaSalida;
-            }
-        }
-    </script>
 </body>
 </html>
