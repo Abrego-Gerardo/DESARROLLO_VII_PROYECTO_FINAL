@@ -13,33 +13,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $precio_adulto = $_POST['precio_adulto'];
     $precio_mayor = $_POST['precio_mayor'];
     $detalles = $_POST['detalles'];
-    $foto = $_FILES['foto']['name'];
-    $target_dir = "../uploads/";
-    $target_file = $target_dir . basename($foto);
-    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
-    // Verificar si el archivo es una imagen
-    $check = getimagesize($_FILES['foto']['tmp_name']);
-    if($check !== false) {
-        // Permitir solo ciertos formatos de imagen
-        $allowed_types = array('jpg', 'jpeg', 'png', 'gif');
-        if(in_array($imageFileType, $allowed_types)) {
-            if (move_uploaded_file($_FILES['foto']['tmp_name'], $target_file)) {
-                $sql = "INSERT INTO destinos (city, tipo_destino, precio_nino, precio_adulto, precio_mayor, detalles, foto) VALUES ('$nombre', '$tipo_destino', '$precio_nino', '$precio_adulto', '$precio_mayor', '$detalles', '$target_file')";
-                if ($conn->query($sql) === TRUE) {
-                    echo "Paquete creado correctamente.";
-                } else {
-                    echo "Error al crear el paquete: " . $conn->error;
-                }
-            } else {
-                echo "Error al subir la imagen.";
-            }
-        } else {
-            echo "Solo se permiten archivos JPG, JPEG, PNG y GIF.";
-        }
+    $sql = "INSERT INTO destinos (city, tipo_destino, precio_nino, precio_adulto, precio_mayor, detalles) VALUES ('$nombre', '$tipo_destino', '$precio_nino', '$precio_adulto', '$precio_mayor', '$detalles')";
+    if ($conn->query($sql) === TRUE) {
+        echo "Paquete creado correctamente.";
     } else {
-        echo "El archivo no es una imagen.";
+        echo "Error al crear el paquete: " . $conn->error;
     }
+
     $conn->close();
 }
 ?>
@@ -56,26 +37,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="header">
         <div class="left">Agregar Paquete</div>
         <div class="right">
-            <?php
+        <?php
             session_start();
-            if (isset($_SESSION['username'])) {
-                echo "Usuario: " . htmlspecialchars($_SESSION['username']);
+            if (isset($_SESSION['user'])) {
+                echo "Usuario: " . htmlspecialchars($_SESSION['user']);
+                echo "<a href='logout.php'>Cerrar sesión</a>";
             } else {
                 echo "<a href='login_form.php' style='color: white;'>Iniciar Sesión</a>";
             }
-            ?>
+        ?>
         </div>
     </div>
     <div class="nav">
         <a href="../index.php">Inicio</a>
         <a href="catalogo_viajes.php">Catálogo de Viajes</a>
-        <a href="detalles_reservas.php">Reservas</a>
+        <a href="reservas.php">Reservas</a>
         <a href="administracion.php">Administración</a>
         <a href="contacto.php">Soporte y Contacto</a>
     </div>
     <div class="main-content">
         <h1>Agregar Detalles del Paquete</h1>
-        <form action="agregar_paquete.php" method="post" enctype="multipart/form-data">
+        <form action="agregar_paquete.php" method="post">
             <label for="nombre">Nombre del Paquete:</label>
             <input type="text" id="nombre" name="nombre" placeholder="Nombre del Paquete" required>
             <label for="tipo_destino">Tipo de Destino:</label>
@@ -91,14 +73,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="number" id="precio_mayor" name="precio_mayor" placeholder="Precio Mayor" required>
             <label for="detalles">Detalles:</label>
             <textarea id="detalles" name="detalles" placeholder="Detalles del Paquete" required></textarea>
-            <label for="foto">Imagen del Paquete:</label>
-            <input type="file" id="foto" name="foto" accept=".jpg,.jpeg,.png,.gif" required>
             <button type="submit">Crear Paquete</button>
         </form>
     </div>
     <div class="footer">
-        <p>&copy; 2024 Agencia de Viajes. Todos los derechos reservados.</p>
+        <p>&copy; 2023 Agencia de Viajes. Todos los derechos reservados.</p>
     </div>
 </body>
 </html>
-

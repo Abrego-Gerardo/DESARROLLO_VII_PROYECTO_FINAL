@@ -10,14 +10,15 @@
     <div class="header">
         <div class="left">Confirmar Reserva</div>
         <div class="right">
-            <?php
+        <?php
             session_start();
-            if (isset($_SESSION['username'])) {
-                echo "Usuario: " . htmlspecialchars($_SESSION['username']);
+            if (isset($_SESSION['user'])) {
+                echo "Usuario: " . htmlspecialchars($_SESSION['user']);
+                echo "<a href='logout.php'>Cerrar sesión</a>";
             } else {
                 echo "<a href='login_form.php' style='color: white;'>Iniciar Sesión</a>";
             }
-            ?>
+        ?>
         </div>
     </div>
     <div class="nav">

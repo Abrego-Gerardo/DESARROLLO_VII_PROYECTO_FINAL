@@ -31,10 +31,11 @@ $conn->close();
     <div class="header">
         <div class="left">Detalles del Viaje</div>
         <div class="right">
-            <?php
+        <?php
             session_start();
-            if (isset($_SESSION['username'])) {
-                echo "Usuario: " . htmlspecialchars($_SESSION['username']);
+            if (isset($_SESSION['user'])) {
+                echo "Usuario: " . htmlspecialchars($_SESSION['user']);
+                echo "<a href='logout.php'>Cerrar sesión</a>";
             } else {
                 echo "<a href='login_form.php' style='color: white;'>Iniciar Sesión</a>";
             }
@@ -44,7 +45,7 @@ $conn->close();
     <div class="nav">
         <a href="../index.php">Inicio</a>
         <a href="catalogo_viajes.php">Catálogo de Viajes</a>
-        <a href="detalles_reservas.php">Reservas</a>
+        <a href="reservas.php">Reservas</a>
         <a href="administracion.php">Administración</a>
         <a href="contacto.php">Soporte y Contacto</a>
     </div>
@@ -58,18 +59,14 @@ $conn->close();
                 <p>Precio Niño: $<?php echo $row["precio_nino"]; ?></p>
                 <p>Precio Adulto: $<?php echo $row["precio_adulto"]; ?></p>
                 <p>Precio Mayor: $<?php echo $row["precio_mayor"]; ?></p>
-                <p>Detalles: <?php echo isset($row["detalles"]) ? nl2br(htmlspecialchars($row["detalles"])) : "No hay detalles disponibles"; ?></p>
-                <form action="procesar_reserva.php" method="post">
-                    <input type="hidden" name="id_viaje" value="<?php echo $row['id']; ?>">
-                    <button type="submit">Reservar</button>
-                </form>
+                <p>Detalles: <?php echo nl2br(htmlspecialchars($row["detalles"])); ?></p>
             </div>
         <?php else: ?>
             <p>No se encontraron detalles para este viaje.</p>
         <?php endif; ?>
     </div>
     <div class="footer">
-        <p>&copy; 2024 Agencia de Viajes. Todos los derechos reservados.</p>
+        <p>&copy; 2023 Agencia de Viajes. Todos los derechos reservados.</p>
     </div>
 </body>
 </html>

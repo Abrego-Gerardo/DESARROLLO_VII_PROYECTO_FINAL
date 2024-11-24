@@ -10,10 +10,11 @@
     <div class="header">
         <div class="left">Soporte y Contacto</div>
         <div class="right">
-            <?php
+        <?php
             session_start();
-            if (isset($_SESSION['username'])) {
-                echo "Usuario: " . htmlspecialchars($_SESSION['username']);
+            if (isset($_SESSION['user'])) {
+                echo "Usuario: " . htmlspecialchars($_SESSION['user']);
+                echo "<a href='logout.php'>Cerrar sesión</a>";
             } else {
                 echo "<a href='login_form.php' style='color: white;'>Iniciar Sesión</a>";
             }
@@ -36,22 +37,11 @@
         </form>
         <h2>Contactos</h2>
         <div class="contenido-blanco">
-            <p><strong>Correos Electrónicos:</strong></p>
-            <ul>
-                <li><a href="mailto:hugoarmandorc2002@gmail.com">hugoarmandorc2002@gmail.com</a></li>
-                <li><a href="mailto:delgadokev13@gmail.com">delgadokev@gmail.com</a></li>
-                <li><a href="mailto:abrego010702@gmail.com">abrego010702@gmail.com.com</a></li>
-            </ul>
-            <p><strong>Números de Teléfono:</strong></p>
-            <ul>
-                <li><a href="tel:+50762914621">+507 6291-4621</a></li>
-                <li><a href="tel:+50768128315">+507 6812-8315</a></li>
-                <li><a href="tel:+50761317547">+507 6131-7547</a></li>
-            </ul>
+            <!-- Aquí se agregarán los detalles de contacto específicos -->
         </div>
     </div>
     <div class="footer">
-        <p>&copy; 2024 Agencia de Viajes. Todos los derechos reservados.</p>
+        <p>&copy; 2023 Agencia de Viajes. Todos los derechos reservados.</p>
     </div>
 </body>
 </html>
