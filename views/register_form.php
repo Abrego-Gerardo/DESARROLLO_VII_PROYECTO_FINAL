@@ -89,6 +89,7 @@
             </div>
         </form>
         <a href="login_form.php">¿Ya tienes cuenta? Iniciar Sesión</a>
+        <a href="../index.php">Volver a Inicio</a>
     </div>
 </body>
 </html>
