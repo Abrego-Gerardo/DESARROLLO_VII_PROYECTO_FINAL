@@ -60,6 +60,7 @@
         </form>
         <a href="register_form.php">Registrarse</a>
         <a href="recover_password_form.php">¿No recuerdas tu contraseña? Recuperar Contraseña</a>
+        <a href="../index.php">Volver a Inicio</a>
     </div>
 </body>
 </html>

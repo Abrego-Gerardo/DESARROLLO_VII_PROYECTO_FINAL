@@ -14,9 +14,9 @@
             session_start();
             if (isset($_SESSION['user'])) {
                 echo "Usuario: " . htmlspecialchars($_SESSION['user']);
-                echo "<a href='views/logout.php'>Cerrar sesión</a>";
+                echo "<a href='logout.php'>Cerrar sesión</a>";
             } else {
-                echo "<a href='views/login_form.php' style='color: white;'>Iniciar Sesión</a>";
+                echo "<a href='login_form.php' style='color: white;'>Iniciar Sesión</a>";
             }
         ?>
         </div>
