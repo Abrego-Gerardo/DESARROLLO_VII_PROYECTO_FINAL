@@ -37,7 +37,16 @@
         </form>
         <h2>Contactos</h2>
         <div class="contenido-blanco">
-            <!-- Aquí se agregarán los detalles de contacto específicos -->
+            <p><strong>Correos Electrónicos:</strong></p>
+            <ul>
+                <li><a href="mailto:hugoarmandorc2002@gmail.com">hugoarmandorc2002@gmail.com</a></li>
+            </ul>
+            <p><strong>Números de Teléfono:</strong></p>
+            <ul>
+                <li><a href="tel:+50762914621">+507 6291-4621</a></li>
+                <li><a href="tel:+50768128315">+507 6812-8315</a></li>
+                <li><a href="tel:+50761317547">+507 6131-7547</a></li>
+            </ul>
         </div>
     </div>
     <div class="footer">
@@ -45,3 +54,4 @@
     </div>
 </body>
 </html>
+
