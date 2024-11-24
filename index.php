@@ -22,6 +22,33 @@ $conn->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio - Agencia de Viajes</title>
     <link rel="stylesheet" href="public/assets/css/style.css">
+    <style>
+        .destinos-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .destino {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            width: 200px;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-shadow: 1px 1px 3px black;
+            border: none;
+            cursor: pointer;
+        }
+        .destino h3 {
+            margin: 0;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.6);
+            width: 100%;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <div class="header">
@@ -56,7 +83,7 @@ $conn->close();
                         echo "<form action='views/detalles_viaje.php' method='get'>";
                         echo "<input type='hidden' name='id' value='" . $row['id'] . "'>";
                         echo "<button type='submit' class='destino' style='background-image: url(" . $row['foto'] . ");'>";
-                        echo "<h3>" . $row['city'] . "</h3>";
+                        echo "<h3>" . htmlspecialchars($row['city']) . "</h3>";
                         echo "</button>";
                         echo "</form>";
                     }
@@ -74,7 +101,7 @@ $conn->close();
                         echo "<form action='views/detalles_viaje.php' method='get'>";
                         echo "<input type='hidden' name='id' value='" . $row['id'] . "'>";
                         echo "<button type='submit' class='destino' style='background-image: url(" . $row['foto'] . ");'>";
-                        echo "<h3>" . $row['city'] . "</h3>";
+                        echo "<h3>" . htmlspecialchars($row['city']) . "</h3>";
                         echo "</button>";
                         echo "</form>";
                     }
