@@ -8,8 +8,8 @@ body {
     min-height: 100vh;
 }
 .header, .footer {
-    background-color: #83070b;
-    color: #feb96e;
+    background-color: #076eff;
+    color: white;
     padding: 10px 20px;
     text-align: center;
 }
@@ -34,7 +34,7 @@ body {
 .nav a {
     margin: 0 15px;
     text-decoration: none;
-    color: #83070b;
+    color: #076eff;
     font-size: 1.2em;
 }
 .nav a:hover {
@@ -70,19 +70,19 @@ body {
 .login-container button, .register-container button {
     width: 100%;
     padding: 10px;
-    background-color: #83070b;
+    background-color: #076eff;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
 .login-container button:hover, .register-container button:hover {
-    background-color: #83070b;
+    background-color: #076eff;
 }
 .login-container a, .register-container a {
     display: block;
     margin-top: 10px;
-    color: #83070b;
+    color: #076eff;
     text-decoration: none;
 }
 .login-container a:hover, .register-container a:hover {
@@ -96,7 +96,7 @@ body {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    background-color: #feb96e;
+    background-color: white;
 }
 .calendario h2 {
     margin: 0 0 10px 0;
@@ -117,14 +117,14 @@ form input, form select, form button {
     margin-top: 5px;
 }
 form button {
-    background-color: #83070b;
+    background-color: #076eff;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
 form button:hover {
-    background-color: #83070b;
+    background-color: #076eff;
 }
 
 /* ...estilos de Busar Viajes... */
@@ -140,7 +140,7 @@ form button:hover {
     font-size: 1.2em;
     font-weight: bold;
     padding: 10px;
-    background-color: #feb96e;
+    background-color: white;
     border-radius: 4px;
 }
 
@@ -150,14 +150,14 @@ form button:hover {
 button {
     padding: 10px 20px;
     margin-top: 20px;
-    background-color: #83070b;
+    background-color: #076eff;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
 button:hover {
-    background-color: #83070b;
+    background-color: #076eff;
 }
 
 /* ...estilos de confirmacion de viajes... */
@@ -178,14 +178,14 @@ form input, form button {
     margin-top: 5px;
 }
 form button {
-    background-color: #83070b;
+    background-color: #076eff;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
 form button:hover {
-    background-color: #83070b;
+    background-color: #076eff;
 }
 
 /* ...estilos de administracion... */
@@ -193,14 +193,14 @@ form button:hover {
 button {
     padding: 10px 20px;
     margin: 5px;
-    background-color: #83070b;
+    background-color: #076eff;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
 button:hover {
-    background-color: #83070b;
+    background-color: #076eff;
 }
 .paquete {
     display: flex;
@@ -231,14 +231,14 @@ form input, form textarea, form button {
     margin-top: 5px;
 }
 form button {
-    background-color: #83070b;
+    background-color: #076eff;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
 form button:hover {
-    background-color: #83070b;
+    background-color: #076eff;
 }
 
 /* ...estilos de contacto... */
@@ -259,14 +259,14 @@ form input, form button {
     margin-top: 5px;
 }
 form button {
-    background-color: #83070b;
+    background-color: #076eff;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
 form button:hover {
-    background-color: #83070b;
+    background-color: #076eff;
 }
 
 /* Añadir estos estilos al final del archivo style.css */
