@@ -23,30 +23,34 @@ $conn->close();
     <title>Inicio - Agencia de Viajes</title>
     <link rel="stylesheet" href="public/assets/css/style.css">
     <style>
-        .destinos-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
         .destino {
             display: flex;
-            justify-content: center;
-            align-items: flex-end;
-            width: 200px;
-            height: 200px;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
             background-size: cover;
             background-position: center;
-            color: white;
-            text-shadow: 1px 1px 3px black;
             border: none;
+            width: 200px;
+            height: 200px;
+            margin: 10px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
             cursor: pointer;
+        }
+        .destino img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
         }
         .destino h3 {
             margin: 0;
-            padding: 10px;
+            padding: 5px;
             background-color: rgba(0, 0, 0, 0.6);
             width: 100%;
             text-align: center;
+            font-size: 1em;
         }
     </style>
 </head>
@@ -56,9 +60,8 @@ $conn->close();
         <div class="right">
             <?php
             session_start();
-            if (isset($_SESSION['user'])) {
-                echo "Usuario: " . htmlspecialchars($_SESSION['user']);
-                echo "<a href='views/logout.php'>Cerrar sesión</a>";
+            if (isset($_SESSION['username'])) {
+                echo "Usuario: " . htmlspecialchars($_SESSION['username']);
             } else {
                 echo "<a href='views/login_form.php' style='color: white;'>Iniciar Sesión</a>";
             }
@@ -82,7 +85,8 @@ $conn->close();
                     while($row = $result_nacionales->fetch_assoc()) {
                         echo "<form action='views/detalles_viaje.php' method='get'>";
                         echo "<input type='hidden' name='id' value='" . $row['id'] . "'>";
-                        echo "<button type='submit' class='destino' style='background-image: url(" . $row['foto'] . ");'>";
+                        echo "<button type='submit' class='destino'>";
+                        echo "<img src='" . $row['foto'] . "' alt='" . $row['city'] . "'>";
                         echo "<h3>" . htmlspecialchars($row['city']) . "</h3>";
                         echo "</button>";
                         echo "</form>";
@@ -100,7 +104,8 @@ $conn->close();
                     while($row = $result_internacionales->fetch_assoc()) {
                         echo "<form action='views/detalles_viaje.php' method='get'>";
                         echo "<input type='hidden' name='id' value='" . $row['id'] . "'>";
-                        echo "<button type='submit' class='destino' style='background-image: url(" . $row['foto'] . ");'>";
+                        echo "<button type='submit' class='destino'>";
+                        echo "<img src='" . $row['foto'] . "' alt='" . $row['city'] . "'>";
                         echo "<h3>" . htmlspecialchars($row['city']) . "</h3>";
                         echo "</button>";
                         echo "</form>";
@@ -113,7 +118,7 @@ $conn->close();
         </div>
     </div>
     <div class="footer">
-        <p>&copy; 2023 Agencia de Viajes. Todos los derechos reservados.</p>
+        <p>&copy; 2024 Agencia de Viajes. Todos los derechos reservados.</p>
     </div>
 </body>
 </html>

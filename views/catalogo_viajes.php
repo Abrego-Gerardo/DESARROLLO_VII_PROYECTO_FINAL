@@ -62,7 +62,7 @@
     </div>
     <div class="main-content">
         <h1>¿A dónde quieres ir?</h1>
-        <form action="buscar_viajes.php" method="post">
+        <form action="catalogo_viajes.php" method="post">
             <label for="origen">Origen:</label>
             <select id="origen" name="origen" required>
                 <option value="Nacional">Nacional</option>
@@ -90,9 +90,9 @@
             </div>
             <button type="submit">Buscar Viaje</button>
         </form>
-    </div>
+
     <div class="footer">
-        <p>&copy; 2024 Agencia de Viajes. Todos los derechos reservados.</p>
+        <p>&copy 2024 Agencia de Viajes. Todos los derechos reservados.</p>
     </div>
 </body>
 </html>
