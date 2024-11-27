@@ -24,6 +24,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Permitir solo ciertos formatos de imagen
         $allowed_types = array('jpg', 'jpeg', 'png', 'gif');
         if(in_array($imageFileType, $allowed_types)) {
+            // Verificar si el directorio de destino existe y crear si no
+            if (!file_exists($target_dir)) {
+                mkdir($target_dir, 0777, true);
+            }
+
             if (move_uploaded_file($_FILES['foto']['tmp_name'], $target_file)) {
                 $sql = "INSERT INTO destinos (city, tipo_destino, precio_nino, precio_adulto, precio_mayor, detalles, foto) VALUES ('$nombre', '$tipo_destino', '$precio_nino', '$precio_adulto', '$precio_mayor', '$detalles', '$target_file')";
                 if ($conn->query($sql) === TRUE) {
@@ -101,4 +106,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 </body>
 </html>
+
 
