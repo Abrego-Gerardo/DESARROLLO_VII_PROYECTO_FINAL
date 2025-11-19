@@ -1,0 +1,25 @@
+Direccion Principal
+http://localhost/PROYECTO/index.php
+
+
+Direcciones para cada pagina
+
+Direcciones de pantallas registro de usuario
+http://localhost/PROYECTO/views/login_form.php
+http://localhost/PROYECTO/views/register_form.php
+
+Direcciones de pantallas del catalogo
+http://localhost/PROYECTO/views/catalogo_viajes.php
+http://localhost/PROYECTO/views/buscar_viajes.php
+http://localhost/PROYECTO/views/detalles_viajes.php
+http://localhost/PROYECTO/views/confirmar_reserva.php
+
+Direccion de pantalla de reservas
+http://localhost/PROYECTO/views/detalles_reservas.php
+
+Direcciones de pantallas de administracion
+http://localhost/PROYECTO/views/administracion.php
+http://localhost/PROYECTO/views/agregar_paquete.php
+
+Direccion de pantallas de contactos
+http://localhost/PROYECTO/views/contactos.php
